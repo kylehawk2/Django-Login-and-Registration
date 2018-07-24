@@ -25,6 +25,16 @@ def register(request):
             return redirect('/')
 
 def login(request):
+    # errors = User.objects.login(request.POST)
+    # if len(errors):
+    #     for tag, error in errors.iteritems():
+    #         messages.error(request, error, extra_tags=tag)
+    #     return redirect('/')
+    # user = User.objects.get(email=request.POST['email'])
+    # request.session['logged_in'] = user.id
+    # return redirect('/success')
+    
+    
     email = request.POST['email']
     password = request.POST['password']
     user = User.objects.filter(email=email)
@@ -45,9 +55,10 @@ def success(request):
     # if 'userid' not in request.session:
     #     return redirect('/')
     context = {
-        'users' : User.objects.get(id=request.POST['name'])
+        'users' : User.objects.get(id=request.session['id'])
     }
     print context
+    
     return render(request, 'login_reg/success.html', context)
     
         

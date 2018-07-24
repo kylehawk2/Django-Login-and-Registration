@@ -21,15 +21,15 @@ class UserManager(models.Manager):
             errors['password'] = "Passwords do not match!"
         return errors 
     
-    def login(self, postData):
-        print ("validating")
-        errors = {}
-        if len(postData["email"]) < 1:
-            errors["email"] = "Must enter in a email address"
-        if not EMAIL_REGEX.match(postData["email"]):
-            errors["email"] = "Email address is not valid"
-        if len(postData['password']) < 5:
-            errors["password"] = "Password must contain at least 6 characters"
+    # def login(self, postData):
+    #     print ("validating")
+    #     errors = {}
+    #     if len(postData["email"]) < 1:
+    #         errors["email"] = "Must enter in a email address"
+    #     if not EMAIL_REGEX.match(postData["email"]):
+    #         errors["email"] = "Email address is not valid"
+    #     if len(postData['password']) < 5:
+    #         errors["password"] = "Password must contain at least 6 characters"
 
 
 class User(models.Model):
